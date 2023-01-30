@@ -1,21 +1,18 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import Triangle from './triangle.js';
+import Entry from './entry.js';
 
-function handleTriangleForm(event) {
+//UI Logic
+
+function handleBlogEntry(event) {
   event.preventDefault();
-  document.querySelector('#response').innerText = null;
-  const length2 = parseInt(document.querySelector('#length2').value);
-  const length1 = parseInt(document.querySelector('#length1').value);
-  const length3 = parseInt(document.querySelector('#length3').value);
-  const triangle = new Triangle(length1, length2, length3);
-  const response = triangle.checkType();
-  const pTag = document.createElement("p");
-  pTag.append(response);
-  document.querySelector('#response').append(pTag);
+  const titleEntry = document.querySelector("#blog-title").value;
+  const blogEntry = document.querySelector("#blog-entry").value;
+  let newEntry = new Entry(titleEntry, blogEntry);
+  console.log(newEntry.getTeaser());
 }
 
 window.addEventListener("load", function() {
-  document.querySelector("#triangle-checker-form").addEventListener("submit", handleTriangleForm);
+  document.querySelector("#blogpost").addEventListener("submit", handleBlogEntry);
 });
