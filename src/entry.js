@@ -36,9 +36,9 @@ Entry.prototype.countWords = function(){
 };
 
 Entry.prototype.getTeaser = function(){
-  const teaser = /^(\w+\s){8}/gi;
+  const teaser = /(\w+\s){8}|^(\w+[\s|?|.])+/gi;
   // const teaser = /^\w+\s*\w*\./gi;
-  
+
   if (!this.body.match(teaser)){
     return null;
   }
